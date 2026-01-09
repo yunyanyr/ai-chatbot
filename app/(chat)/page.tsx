@@ -16,11 +16,11 @@ export default function Page() {
 }
 
 async function NewChatPage() {
-  const session = await auth();
+  // const session = await auth();
 
-  if (!session) {
-    redirect("/api/auth/guest");
-  }
+  // if (!session) {
+  //   redirect("/api/auth/guest");
+  // }
 
   const id = generateUUID();
 

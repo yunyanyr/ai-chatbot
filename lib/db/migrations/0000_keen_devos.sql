@@ -1,8 +1,11 @@
 CREATE TABLE IF NOT EXISTS "Chat" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"createdAt" timestamp NOT NULL,
+	"title" text NOT NULL,
 	"messages" json NOT NULL,
-	"userId" uuid NOT NULL
+	"userId" uuid NOT NULL,
+	"visibility" varchar DEFAULT 'private' NOT NULL,
+	"lastContext" jsonb NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "User" (

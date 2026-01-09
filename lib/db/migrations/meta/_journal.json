@@ -23,20 +23,7 @@
       "tag": "0002_wandering_riptide",
       "breakpoints": true
     },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1733403031014,
-      "tag": "0003_cloudy_glorian",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1733945232355,
-      "tag": "0004_odd_slayback",
-      "breakpoints": true
-    },
+
     {
       "idx": 5,
       "version": "7",
@@ -51,11 +38,12 @@
       "tag": "0006_marvelous_frog_thor",
       "breakpoints": true
     },
+
     {
-      "idx": 7,
+      "idx": 8,
       "version": "7",
-      "when": 1757362773211,
-      "tag": "0007_flowery_ben_parker",
+      "when": 1767593577516,
+      "tag": "0008_red_pet_avengers",
       "breakpoints": true
     }
   ]

@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS "Document" (
 	"title" text NOT NULL,
 	"content" text,
 	"userId" uuid NOT NULL,
+	 "text" varchar DEFAULT 'text' NOT NULL,
 	CONSTRAINT "Document_id_createdAt_pk" PRIMARY KEY("id","createdAt")
 );
 --> statement-breakpoint

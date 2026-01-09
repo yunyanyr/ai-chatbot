@@ -22,6 +22,7 @@ import { generateUUID } from "../utils";
 import {
   type Chat,
   chat,
+  chatApiCall,
   type DBMessage,
   document,
   message,
@@ -588,6 +589,52 @@ export async function getStreamIdsByChatId({ chatId }: { chatId: string }) {
     throw new ChatSDKError(
       "bad_request:database",
       "Failed to get stream ids by chat id"
+    );
+  }
+}
+
+export async function saveChatApiCall({ userId }: { userId: string }) {
+  try {
+    return await db.insert(chatApiCall).values({
+      userId,
+      createdAt: new Date(),
+    });
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to save chat api call"
+    );
+  }
+}
+
+export async function getChatApiCallCountByUserId({
+  id,
+  differenceInHours,
+}: {
+  id: string;
+  differenceInHours: number;
+}) {
+  try {
+    const timeAgo = new Date(
+      Date.now() - differenceInHours * 60 * 60 * 1000
+    );
+
+    const [stats] = await db
+      .select({ count: count(chatApiCall.id) })
+      .from(chatApiCall)
+      .where(
+        and(
+          eq(chatApiCall.userId, id),
+          gte(chatApiCall.createdAt, timeAgo)
+        )
+      )
+      .execute();
+
+    return stats?.count ?? 0;
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to get chat api call count by user id"
     );
   }
 }
